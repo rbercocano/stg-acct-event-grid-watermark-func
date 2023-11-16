@@ -21,7 +21,7 @@ namespace FunctionApp1
 {
     public static class Function1
     {
-        private static readonly string BLOB_STORAGE_CONNECTION_STRING = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
+        private static readonly string BLOB_STORAGE_CONNECTION_STRING = Environment.GetEnvironmentVariable("StgAcctConString");
         [FunctionName("Function1")]
         public static void Run([EventGridTrigger] EventGridEvent eventGridEvent,
             [Blob("{data.url}", FileAccess.Read)] Stream input, ILogger log, ExecutionContext context)
