@@ -24,7 +24,7 @@ namespace FunctionApp1
         private static readonly string BLOB_STORAGE_CONNECTION_STRING = Environment.GetEnvironmentVariable("StgAcctConString");
         [FunctionName("Function1")]
         public static void Run([EventGridTrigger] EventGridEvent eventGridEvent,
-            [Blob("{data.url}", FileAccess.Read)] Stream input, ILogger log, ExecutionContext context)
+            [Blob("{data.url}", FileAccess.Read, Connection = "StgAcctConString")] Stream input, ILogger log, ExecutionContext context)
         {
             var createdEvent = JObject.Parse(eventGridEvent.Data.ToString());
             var extension = Path.GetExtension(createdEvent["url"].Value<string>());
