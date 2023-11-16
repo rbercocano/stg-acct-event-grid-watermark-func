@@ -44,7 +44,7 @@ namespace FunctionApp1
 
 
                 var blobServiceClient = new BlobServiceClient(BLOB_STORAGE_CONNECTION_STRING);
-                var blobContainerClient = blobServiceClient.GetBlobContainerClient("thumbnail");
+                var blobContainerClient = blobServiceClient.GetBlobContainerClient("watermarked");
                 var blobName = GetBlobNameFromUrl(createdEvent["url"].Value<string>());
                 output.Position = 0;
                 blobContainerClient.UploadBlob(blobName, output);
